@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Comparison Canoeing</title>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <style>
+        .noselect {
+            pointer-events: none;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+        }
+        #your-text {
+            font-size: 12px;
+            word-wrap: break-word;
+        }
+        input, button {
+            pointer-events: auto;
+        }
+</style>
+    </head>
+    <body>
+        <div id="user-interface" class="noselect">
+            <h1>Large Text Generator</h1>
+            Enter the number of bytes of text you would like to generate, then click Generate.
+            <p></p>
+            There are no line breaks in the generated text.
+            <p></p>
+            You can select all of the generated text with Ctrl+A. This text will not be selected.
+            <p></p>
+            <input id="text-size" type="number" value="1" min="1" placeholder="Size (in bytes)"/>
+            <button onclick="generateText();">Generate</button>
+            <h3>Your text:</h3>
+        </div>
+        <div id="your-text">
+
+        </div>
+        <script>
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function generateText() {
+                var input = document.getElementById("text-size");
+                var div = document.getElementById("your-text");
+                var size = parseInt(input.value);
+                var str = "";
+                for(var i = 0; i < size; i++) {
+                    str += String.fromCharCode(getRandomInt(65, 90));
+                }
+                div.textContent = str;
+            }
+            
+        </script>
+    </body>
+</html>
